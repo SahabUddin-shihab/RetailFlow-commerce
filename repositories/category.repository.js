@@ -7,5 +7,4 @@ class CategoryRepository extends BaseRepository {
         super(Category);
     }
 }
-
 module.exports= CategoryRepository
