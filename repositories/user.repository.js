@@ -40,7 +40,23 @@ class UserRepository extends BaseRepository {
         }).select('+password +passwordResetToken +passwordResetExpires');
     }
 
-   
+    async addToWishlist(userId, productId) {
+
+        return this.model.findByIdAndUpdate(
+            userId,
+            { $addToSet: { wishlist: productId } },
+            { new: true }
+        ).populate('wishlist', 'name price salePrice thumbnail slug');
+    }
+
+    async removeFromWishlist(userId, productId) {
+        
+        return this.model.findByIdAndUpdate(
+            userId,
+            { $pull: { wishlist: productId } },
+            { new: true }
+        );
+    }
 }
 
 module.exports = UserRepository;
