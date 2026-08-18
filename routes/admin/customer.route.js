@@ -9,9 +9,9 @@ router.use(adminProtect);
 
 const idSchema = z.object({ params: z.object({ id: objectId }) });
 
-router.get('/',                                             AdminCustomerController.index);
-router.get('/:id',       validate(idSchema),               AdminCustomerController.show);
-router.patch('/:id/toggle-status', validate(idSchema),     AdminCustomerController.toggleStatus);
-router.get('/:id/orders',validate(idSchema),               AdminCustomerController.orderHistory);
+router.get('/',AdminCustomerController.index);
+router.get('/:id',validate(idSchema),AdminCustomerController.show);
+router.patch('/:id/toggle-status', validate(idSchema),AdminCustomerController.toggleStatus);
+router.get('/:id/orders',validate(idSchema),AdminCustomerController.orderHistory);
 
 module.exports = router;
